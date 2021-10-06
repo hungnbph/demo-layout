@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ViewChild,Renderer2, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import {ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Component({
   selector: 'layout-sidebar-left',
@@ -13,14 +13,8 @@ export class SidebarLeftComponent implements OnInit {
   toggle = false;
   data: Array<any> = [];
   pathRouting:any;
-  @ViewChild('insideElement') insideElement: ElementRef;
   parent2: any;
-  constructor( private renderer: Renderer2) {
-    this.renderer.listen('document', 'click',(e:any)=>{
-     if(e.target !== this.insideElement.nativeElement && this.toggle==true){
-         console.log('output')
-     }
- });
+  constructor( private elm : ElementRef,) {
     this.data = [
       {
         "id": 1,
@@ -182,6 +176,20 @@ export class SidebarLeftComponent implements OnInit {
         ]
       }
     ]
+   }
+   @HostListener('document:click', ['$event.target'])
+   public onClick(target:any) {
+     const clickedInside = this.elm.nativeElement.contains(target);
+     if (!clickedInside) {
+       if(
+         this.toggle==true
+       ){
+         this.clickOutside.emit();
+         this.data.forEach((envent:any)=> {
+          envent.show=false
+         });
+       }
+     }
    }
 
    addmar(item:any , parent:Array<any>): void {
