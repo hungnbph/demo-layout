@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "An ninh - Bảo vệ",
+        "display_in_form": true
+    },
+    {
+        "id": 2,
+        "name": "Báo chí - Truyền hình",
+        "display_in_form": true
+    },
+    {
+        "id": 3,
+        "name": "Bảo hiểm",
+        "display_in_form": true
+    },
+    {
+        "id": 4,
+        "name": "Phiên dịch",
+        "display_in_form": true
+    },
+    {
+        "id": 5,
+        "name": "Phim",
+        "display_in_form": true
+    },
+    {
+        "id": 6,
+        "name": "Cơ khí chế tạo máy",
+        "display_in_form": true
+    },
+    {
+        "id": 7,
+        "name": "thế thao",
+        "display_in_form": true
+    },
+    {
+        "id": 8,
+        "name": "Y tế",
+        "display_in_form": true
+    },
+    {
+        "id": 9,
+        "name": "Giáo dục",
+        "display_in_form": true
+    },
+    {
+        "id": 10,
+        "name": "Ẩm thực",
+        "display_in_form": true
+    },
+    {
+        "id": 11,
+        "name": "Khoa học - Kỹ thuật",
+        "display_in_form": true
+    },
+    {
+        "id": 12,
+        "name": "Địa chất",
+        "display_in_form": true
+    },
+    {
+        "id": 13,
+        "name": "Môi trường",
+        "display_in_form": true
+    },
+    {
+        "id": 14,
+        "name": "Nông nghiệp",
+        "display_in_form": true
+    }
+]

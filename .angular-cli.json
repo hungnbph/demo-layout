@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "demo-layout"
+    "name": "layout"
   },
   "apps": [
     {
@@ -17,11 +17,23 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "mo-layout",
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/popper.js/dist/umd/popper.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/socket.io-client/dist/socket.io.js",
+        "../node_modules/lib/src/assets/js/amcharts/amcharts.js",
+        "../node_modules/lib/src/assets/js/amcharts/gauge.js",
+        "../node_modules/lib/src/assets/js/amcharts/light.js",
+        "../node_modules/lib/src/assets/js/amcharts/pie.js",
+        "../node_modules/lib/src/assets/js/amcharts/funnel.js",
+        "../node_modules/lib/src/assets/js/amcharts/xy.js",
+        "../node_modules/lib/src/assets/js/amcharts/serial.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -54,7 +66,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

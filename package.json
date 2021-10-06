@@ -12,18 +12,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.2.4",
-    "@angular/common": "^4.2.4",
-    "@angular/compiler": "^4.2.4",
-    "@angular/core": "^4.2.4",
-    "@angular/forms": "^4.2.4",
-    "@angular/http": "^4.2.4",
-    "@angular/platform-browser": "^4.2.4",
-    "@angular/platform-browser-dynamic": "^4.2.4",
-    "@angular/router": "^4.2.4",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "lib": "git+https://mobiodeveloper:54eef8c8a6faca078e557399ec97e82077a35765@gitbucket.mobio.vn/git/locdd/lib.git",
+    "node-sass": "^6.0.1"
   },
   "devDependencies": {
     "@angular/cli": "1.4.10",

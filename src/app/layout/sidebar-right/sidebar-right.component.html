@@ -1,0 +1,102 @@
+<div class=" mo-lib-min-height-100vh mo-lib-bg-ffffff mo-lib-w-28px position-fixed mo-lib-right-0 mo-lib-border-left-general">
+
+
+  <div (click)="logout()"
+  class="mo-lib-h-44px d-flex align-items-center justify-content-center position-relative" >
+    <a  class="mo-lib-cursor-pointer">
+      <img  class="mo-lib-border-radius-10px mo-lib-w-20px mo-lib-h-20px mo-lib-border-general" src="https://tse3.mm.bing.net/th?id=OIP.Wm3vQxY8EBD81h_l79SDlAHaEd&pid=Api&P=0&w=274&h=166">
+    </a>
+    <div
+      *ngIf="hien==true"
+    class=" position-absolute mo-lib-left--270px mo-lib-top-0">
+      <div  class=" mo-lib-bg-ffffff mo-lib-border-radius-5px  mo-lib-w-260px">
+        <div >
+          <div  class="mo-lib-p-12px d-flex mo-lib-border-bottom-general">
+            <img  class="mo-lib-border-radius-50em mo-lib-w-32px mo-lib-h-32px mo-lib-border-general" src="https://tse3.mm.bing.net/th?id=OIP.Wm3vQxY8EBD81h_l79SDlAHaEd&pid=Api&P=0&w=274&h=166">
+            <div  class="mo-lib-ml-8px">
+              <div  class="mo-lib-font-head-4s mo-lib-color-333333">admin</div>
+              <div  class="mo-lib-font-head-4 mo-lib-color-333333 mo-lib-opacity-5">admin@gmail.com</div>
+            </div>
+          </div>
+
+          <div  class="mo-lib-px-12px mo-lib-py-8px mo-lib-bg-hover-ebf0f5 d-flex align-items-center mo-lib-cursor-pointer">
+            <span  class="mo-lib-font-size-14px mo-lib-color-333333 mo-icn-Home  mo-lib-mr-12px"></span>
+            <span  class="mo-lib-font-head-4s">Thông tin tài khoản</span>
+          </div>
+
+          <div  class="mo-lib-px-12px mo-lib-py-8px mo-lib-bg-hover-ebf0f5 d-flex align-items-center mo-lib-cursor-pointer">
+            <span  class="mo-lib-font-size-14px mo-lib-color-333333 mo-icn-Home mo-lib-mr-12px"></span>
+            <span  class="mo-lib-font-head-4s"> chức năng</span>
+          </div>
+
+
+
+          <div  class="mo-lib-px-12px mo-lib-py-8px mo-lib-bg-hover-ebf0f5 d-flex align-items-center mo-lib-border-bottom-general mo-lib-cursor-pointer">
+            <span  class="mo-lib-font-size-14px mo-lib-color-333333 mo-icn-Home mo-lib-mr-12px"></span>
+            <span  class="mo-lib-font-head-4s">Phân quyền </span>
+            <span  class="mo-lib-font-size-8px mo-lib-color-333333 mo-icn-Home mo-lib-ml-auto"></span>
+          </div>
+
+          <div  class="mo-lib-px-12px mo-lib-py-8px mo-lib-bg-hover-ebf0f5 d-flex align-items-center mo-lib-cursor-pointer">
+            <span  class="mo-lib-font-size-14px mo-lib-color-ff5454 mo-icn-Home mo-lib-mr-12px"></span>
+            <span  class="mo-lib-font-head-4s mo-lib-color-ff5454">Đăng xuất</span>
+          </div>
+
+          <div  class="mo-lib-px-12px mo-lib-pt-8px mo-lib-pb-12px mo-lib-color-333333 mo-lib-font-head-5 mo-lib-opacity-5">
+            Phiên bản v3.5.0
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+  (click)="noitify()"
+  class="mo-lib-border-top-general mo-lib-h-38px d-flex align-items-center justify-content-center position-relative" >
+    <span  class="mo-icn-Home mo-lib-font-size-14px mo-lib-cursor-pointer">
+    </span>
+    <div
+    *ngIf="hienNoitify==true"
+    class=" position-absolute  mo-lib-left--270px mo-lib-top-0" >
+      <div  class=" mo-lib-bg-ffffff mo-lib-border-radius-5px mo-lib-overflow-hidden mo-lib-w-260px">
+          <div  class="mo-lib-h-40px mo-lib-border-bottom-general d-flex mo-lib-px-12px align-items-center">
+              <span  class="mo-lib-font-head-2s">Thông báo</span>
+
+          </div>
+         <div  class="mo-lib-p-8px d-flex align-items-center justify-content-center ">
+              <div  classlabel="mo-lib-font-head-4s" label="i18n_view_all_notification" type="text-blue" _nghost-c6="">
+                <div  type="other" >
+                  <button  class="mo-lib-button-text mo-lib-button-text-blue">
+                    <span  class="mo-lib-font-head-4s">Xem tất cả thông báo</span>
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div  class="mo-lib-border-top-general mo-lib-h-44px d-flex align-items-center justify-content-center">
+  <div  class="mo-lib-cursor-pointer">
+    <img  class=" mo-lib-w-20px mo-lib-h-20px mo-lib-border-radius-10px" src="https://tse3.mm.bing.net/th?id=OIP.Wm3vQxY8EBD81h_l79SDlAHaEd&pid=Api&P=0&w=274&h=166">
+  </div>
+</div>
+
+<div  class="mo-lib-border-top-general mo-lib-pt-14px d-flex align-items-center justify-content-center">
+  <span  class="mo-icn-Home mo-lib-font-size-14px mo-lib-cursor-pointer"></span>
+</div>
+
+<div
+
+  class="position-absolute mo-lib-bottom-0 mo-lib-w-28px" >
+  <div
+  *ngFor="let item of api"
+  class="mo-lib-pb-12px d-flex align-items-center justify-content-center">
+    <a  href="#" >
+      <span  class="{{item.icon}} mo-lib-font-size-14px mo-lib-cursor-pointer"></span>
+    </a>
+  </div>
+
+</div>
+
+</div>
