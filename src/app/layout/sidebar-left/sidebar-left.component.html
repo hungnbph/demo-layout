@@ -5,11 +5,11 @@
   class=" d-flex align-items-center justify-content-between mo-lib-pr-10px mo-lib-h-56px mo-lib-border-bottom-1px-666b79 position-relative mo-lib-pl-12px mo-lib-mr-10px ">
     <a
       title="#"
-      class=""
-      [ngClass]="{'mo-lib-w-24px mo-lib-h-24px mo-lib-bg-ffffff mo-lib-border-radius-4px ':toggle, 'mo-lib-w-160px mo-lib-h-32px mo-lib-overflow-hidden mo-lib-bg-ffffff':!toggle}"
+      class="mo-lib-border-radius-4px mo-lib-bg-ffffff"
+      [ngClass]="{'mo-lib-w-24px mo-lib-h-24px ':toggle, 'mo-lib-w-160px mo-lib-h-32px mo-lib-overflow-hidden ':!toggle}"
       >
-      <img class="" src="https://tse3.mm.bing.net/th?id=OIP.Wm3vQxY8EBD81h_l79SDlAHaEd&pid=Api&P=0&w=274&h=166"
-        alt="logo" [ngClass]="{'d-flex mo-lib-h-inherit mo-lib-m-auto mo-lib-max-width-160px': !toggle, 'd-flex mo-lib-h-inherit mo-lib-m-auto mo-lib-p-2px mo-lib-max-width-24px': toggle}" />
+      <img class="d-flex mo-lib-h-inherit mo-lib-m-auto" src="https://t1.mobio.vn/static/1b99bdcf-d582-4f49-9715-1b61dfff3924/1e48abc7-5277-4f1c-af59-07e8ed402e47.jpg"
+        alt="logo" [ngClass]="{' mo-lib-max-width-160px ': !toggle, ' mo-lib-p-2px mo-lib-max-width-24px': toggle}" />
     </a>
     <div class="togger mo-lib-font-size-8px"
       (click)="toggle1()">
@@ -22,15 +22,15 @@
   </div>
   <div class="sidebar">
       <div class="sidebar__list" *ngFor="let item of data; let i = index" [ngClass]="{ 'd-flex justify-content-center position-relative': toggle }">
-        <a [routerLink]="['/', item.router]"
-        class="d-flex align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px mo-lib-cursor-pointer"
+        <a (click) = "goPlace(item)"
+        class="d-flex align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px mo-lib-cursor-pointer mo-lib-bg-hover-303642 hoverSpan"
         style="text-decoration: none;"
-        (click)="addmar(item, data)">
-          <span class="{{item.icon}} mo-lib-w-14px mo-lib-h-14px mo-lib-mr-10px"
+        (click)="clickShowSidebarCap1(item, data)">
+          <span class="{{item.icon}} mo-lib-w-14px mo-lib-h-14px mo-lib-font-size-14px"
           [ngClass]="{ 'mo-lib-color-ffffff': item.show, 'mo-lib-color-929499': !item.show }">
           </span>
 
-          <span *ngIf="toggle==false" class=" mmo-lib-m-auto d-flex mo-lib-mr-10px mo-lib-font-head-3s"
+          <span *ngIf="toggle==false" class=" d-flex mo-lib-mr-10px mo-lib-pl-14px mo-lib-font-head-3s"
             [ngClass]="{ 'mo-lib-color-ffffff': item.show, 'mo-lib-color-929499': !item.show }">
               {{ item.name }}
           </span>
@@ -46,10 +46,10 @@
         *ngIf="item.show == true"
         [ngClass]="{'position-absolute mo-lib-right--238px mo-lib-w-238px mo-lib-bg-252933 mo-lib-border-left-1px-666b79 mo-lib-border-radius-top-right-8px mo-lib-border-radius-bottom-right-8px':toggle}">
           <div class="" *ngFor="let childrens1 of item.childrens"
-            [ngClass]="{ 'mo-lib-border-left-4px-009cdb mo-lib-bg-303642':childrens1.hiden==true }">
+            [ngClass]="{ 'router-link-active':childrens1.hiden==true }">
 
-            <a  (click)="addmar12(childrens1, item.childrens, $event)"
-              class=" mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
+            <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data, $event)" (click) = "RouterShowSidebar(childrens1)"
+              class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
               [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false}">
               {{ childrens1.name }}
                 <span *ngIf="childrens1.childrens2"
@@ -61,11 +61,10 @@
 
             <div *ngIf="childrens1.show == true ">
               <div *ngFor="let childrens3 of childrens1.childrens2"
-              [ngClass]="{ 'mo-lib-border-left-4px-009cdb mo-lib-bg-303642':childrens3.hiden==true }">
+              [ngClass]="{ 'router-link-active':childrens3.hiden==true }">
                 <a
-                (click)="click3(childrens3,childrens1.childrens2, item.childrens,data)"
-                class="mo-lib-color-929499 align-items-center d-flex mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-18px mo-lib-cursor-pointer mo-lib-font-head-3s"
-                [ngClass]="{ 'mo-lib-color-929499':childrens3.hiden==false,'mo-lib-color-ffffff':childrens3.hiden==true }"
+                (click)="clicksidebarcap3(childrens3,childrens1.childrens2, item.childrens,data)" (click) = "RouterShowSidebarThree(childrens3)"
+                class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-color-929499 align-items-center d-flex mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-18px mo-lib-cursor-pointer mo-lib-font-head-3s"
                 >
                   {{ childrens3.name }}
                 </a>

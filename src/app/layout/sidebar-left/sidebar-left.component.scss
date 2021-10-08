@@ -35,32 +35,7 @@
   }
 }
 
- .toggle-open{
-  width: 60px !important;
-  .togger{
-    position: absolute;
-    right: -10px;
-  }
-  .img-link{
-    width: 24px;
-    height: 24px;
-    background-color: #fff;
-    border: 2px solid #fff;
-    img{
-      width: 100% !important;
-    }
-  }
-  .sidebar{
-    .sidebar__item{
-      position: relative;
-      .sidebar__dropdown{
-        position: absolute;
-        right: -200px;
-        min-width:200px;
-      }
-    }
-  }
-}
+
 .hover1{
   &:hover  .cohover{
     color: #ffffff !important;
@@ -68,6 +43,24 @@
 }
 
 .router-link-active{
-  border-left: 4px solid #009cdb!important;
+  position: relative;
   background-color: #303642!important;
+  &::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #009cdb ;
+  }
+  a{
+    color: #ffffff !important;
+  }
+}
+
+.hoverSpan{
+  &:hover span{
+      color: #ffffff !important;
+  }
 }
