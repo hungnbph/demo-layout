@@ -40,7 +40,7 @@ export class SidebarLeftComponent implements OnInit {
                   childrens.hiden = true;
                   return;
                 }
-                console.log('cấp 3')
+                console.log('cấp 3');
               });
             }
           });
