@@ -1,6 +1,8 @@
 .content{
-  width:100%;
-  padding:1rem;
-  overflow: auto;
   height: 100vh;
+  overflow: hidden;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  margin-right: 30px;
 }

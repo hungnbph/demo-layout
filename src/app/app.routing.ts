@@ -5,8 +5,13 @@ import { UserCanActive } from 'lib/src/app/service/common/authenticate.service';
 import { LayoutComponent } from './layout/layout.component';
 import { MoLibLoginComponent } from 'lib/src/app/components/login/login.component';
 import { MoLibRegisterComponent } from 'lib/src/app/components/register/register.component';
-import { ContentComponent } from './layout/content/content.component';
-import { Content2Component } from './layout/content2/content2.component';
+import { HomeComponent } from './layout/content/home/home.component';
+import { ProfileComponent } from './layout/content/cdp/profile/profile.component';
+import { UnityProfileComponent } from './layout/content/cdp/unity-profile/unity-profile.component';
+import { CheckEmailComponent } from './layout/content/cdp/check-email/check-email.component';
+import { ProfileAdminComponent } from './layout/content/cdp/profile-admin/profile-admin.component';
+import { ProfileCustomizationComponent } from './layout/content/cdp/profile-customization/profile-customization.component';
+import { EventCustomizationComponent } from './layout/content/cdp/event-customization/event-customization.component';
 
 export const routes: Routes = [
   {
@@ -23,14 +28,48 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: ContentComponent
+        component: HomeComponent,
       },
       {
-        path: 'detail',
-        component: Content2Component
+        path: 'home',
+        component: HomeComponent,
       },
-    ]
-  }
+      {
+        path: 'cdp',
+        component: ProfileComponent,
+        children: [
+          {
+            path: 'profile',
+            component: ProfileComponent,
+          },
+          {
+            path: 'untyprofile',
+            component: UnityProfileComponent,
+          },
+          {
+            path: 'check-email',
+            component: CheckEmailComponent,
+          },
+          {
+            path: 'profile-admin',
+            component: ProfileAdminComponent,
+          },
+          {
+            path: 'profile-customization',
+            component: ProfileCustomizationComponent,
+          },
+          {
+            path: 'event-customization',
+            component: EventCustomizationComponent,
+          },
+        ],
+      },
+      {
+        path: 'event-customization',
+        component: EventCustomizationComponent,
+      }
+    ],
+  },
 ];
 
 @NgModule({

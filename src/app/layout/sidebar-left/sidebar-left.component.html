@@ -11,24 +11,24 @@
       <img class="d-flex mo-lib-h-inherit mo-lib-m-auto" src="https://t1.mobio.vn/static/1b99bdcf-d582-4f49-9715-1b61dfff3924/1e48abc7-5277-4f1c-af59-07e8ed402e47.jpg"
         alt="logo" [ngClass]="{' mo-lib-max-width-160px ': !toggle, ' mo-lib-p-2px mo-lib-max-width-24px': toggle}" />
     </a>
-    <div class="togger mo-lib-font-size-8px"
+    <div class="togger mo-lib-font-size-8px mo-lib-cursor-pointer"
       (click)="toggle1()">
-
       <i
-        class="mo-lib-border-radius-50px mo-lib-h-20px  mo-lib-w-20px align-items-center mo-lib-bg-009cdb mo-lib-color-ffffff justify-content-center d-flex"
-        [ngClass]="{ 'mo-icn-forward  position-absolute mo-lib-right--20px': toggle==true,'mo-icn-back-filter ':toggle==false }">
+        class="mo-lib-border-radius-50px mo-lib-h-20px  mo-lib-w-20px align-items-center mo-lib-bg-009cdb mo-lib-color-ffffff justify-content-center d-flex mo-lib-z-index-1000"
+        [ngClass]="{ 'mo-icn-forward  position-absolute mo-lib-right--20px mo-lib-top-20px': toggle==true,'mo-icn-back-filter ':toggle==false }">
       </i>
     </div>
   </div>
-  <div class="sidebar">
-      <div class="sidebar__list" *ngFor="let item of data; let i = index" [ngClass]="{ 'd-flex justify-content-center position-relative': toggle }">
-        <a (click) = "goPlace(item)"
+  <div class="sidebar mo-lib-overflow-y-auto mo-lib-calc-vh-56px">
+      <div class="mo-lib-bg-hover-303642 " *ngFor="let item of data; let i = index"  [ngClass]="{ 'd-flex justify-content-center position-relative hoverSpan': toggle, 'router-link-active2':item.hiden}" >
+        <a (click) = "goPlace(item)" (click)="clickAddStyle($event)" #addStyle
         class="d-flex align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px mo-lib-cursor-pointer mo-lib-bg-hover-303642 hoverSpan"
         style="text-decoration: none;"
+        [ngClass]="{'mo-lib-bg-303642':item.show}"
         (click)="clickShowSidebarCap1(item, data)">
-          <span class="{{item.icon}} mo-lib-w-14px mo-lib-h-14px mo-lib-font-size-14px"
+          <i class="{{item.icon}} mo-lib-w-14px mo-lib-h-14px mo-lib-font-size-14px"
           [ngClass]="{ 'mo-lib-color-ffffff': item.show, 'mo-lib-color-929499': !item.show }">
-          </span>
+          </i>
 
           <span *ngIf="toggle==false" class=" d-flex mo-lib-mr-10px mo-lib-pl-14px mo-lib-font-head-3s"
             [ngClass]="{ 'mo-lib-color-ffffff': item.show, 'mo-lib-color-929499': !item.show }">
@@ -42,13 +42,13 @@
         </a>
 
 
-        <div class=" mo-lib-bg-151921"
+        <div  class=" mo-lib-bg-151921" [ngStyle]="{'top':addStay === 0 ? '0' : addStay + 'px'}"
         *ngIf="item.show == true"
-        [ngClass]="{'position-absolute mo-lib-right--238px mo-lib-w-238px mo-lib-bg-252933 mo-lib-border-left-1px-666b79 mo-lib-border-radius-top-right-8px mo-lib-border-radius-bottom-right-8px':toggle}">
+        [ngClass]="{'mo-lib-z-index-1000 mo-lib-overflow-hidden position-fixed mo-lib-w-238px  mo-lib-left-60px mo-lib-border-left-1px-666b79 mo-lib-border-radius-top-right-8px mo-lib-border-radius-bottom-right-8px':toggle}">
           <div class="" *ngFor="let childrens1 of item.childrens"
             [ngClass]="{ 'router-link-active':childrens1.hiden==true }">
 
-            <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data, $event)" (click) = "RouterShowSidebar(childrens1)"
+            <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data, $event)" (click) = "RouterShowSidebar(childrens1, item, data)"
               class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
               [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false}">
               {{ childrens1.name }}

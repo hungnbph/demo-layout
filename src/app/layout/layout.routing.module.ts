@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContentComponent } from './content/content.component';
-import { Content2Component } from './content2/content2.component';
 import { AppCustomPreload } from '../app.routing.loader';
 
 
@@ -16,5 +14,5 @@ export const routes: Routes = [
   exports: [RouterModule],
   providers: [AppCustomPreload]
 })
-export class  LayoutroutingModule{
+export class LayoutroutingModule {
 }
