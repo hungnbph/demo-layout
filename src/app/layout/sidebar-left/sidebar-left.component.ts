@@ -34,17 +34,17 @@ export class SidebarLeftComponent implements OnInit {
           }
           this.data.filter((childrens: any) => {
             if (childrens.childrens) {
-              childrens.childrens.forEach((childrens1: any) => {
+              childrens.childrens.filter((childrens1: any) => {
                 if (`/${childrens1.router}` === event.url) {
                   childrens1.hiden = true;
                   childrens.hiden = true;
+                  return;
                 }
+                console.log('cấp 3')
               });
-
             }
-          })
+          });
         });
-
       });
   }
 
