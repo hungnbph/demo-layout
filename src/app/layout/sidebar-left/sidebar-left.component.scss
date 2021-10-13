@@ -1,5 +1,19 @@
 
 .router-link-active{
+    color: #ffffff !important;
+    position: relative !important;
+    background-color: #303642!important;
+    &::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #009cdb ;
+    }
+}
+.router-link-active3{
   position: relative;
   background-color: #303642!important;
   &::after{

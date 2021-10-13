@@ -11,7 +11,7 @@
       <img class="d-flex mo-lib-h-inherit mo-lib-m-auto" src="https://t1.mobio.vn/static/1b99bdcf-d582-4f49-9715-1b61dfff3924/1e48abc7-5277-4f1c-af59-07e8ed402e47.jpg"
         alt="logo" [ngClass]="{' mo-lib-max-width-160px ': !toggle, ' mo-lib-p-2px mo-lib-max-width-24px': toggle}" />
     </a>
-    <div class="togger mo-lib-font-size-8px mo-lib-cursor-pointer"
+    <div class="togger mo-lib-font-size-8px mo-lib-cursor-pointer mo-lib-ml-10px"
       (click)="toggle1()">
       <i
         class="mo-lib-border-radius-50px mo-lib-h-20px  mo-lib-w-20px align-items-center mo-lib-bg-009cdb mo-lib-color-ffffff justify-content-center d-flex mo-lib-z-index-1000"
@@ -21,10 +21,10 @@
   </div>
   <div class="sidebar mo-lib-overflow-y-auto mo-lib-calc-vh-56px">
       <div class="mo-lib-bg-hover-303642 " *ngFor="let item of data; let i = index"  [ngClass]="{ 'd-flex justify-content-center position-relative hoverSpan': toggle, 'router-link-active2':item.hiden}" >
-        <a (click) = "goPlace(item)" (click)="clickAddStyle($event)" #addStyle
-        class="d-flex align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px mo-lib-cursor-pointer mo-lib-bg-hover-303642 hoverSpan"
+        <a (click) = "goPlace(item)" (click)="paddingTopSidebar($event)" #addStay
+        class="d-flex align-items-center mo-lib-h-36px  mo-lib-cursor-pointer mo-lib-bg-hover-303642 hoverSpan"
         style="text-decoration: none;"
-        [ngClass]="{'mo-lib-bg-303642':item.show}"
+        [ngClass]="{'mo-lib-bg-303642':item.show, 'w-100 justify-content-center':toggle, 'mo-lib-pr-14px mo-lib-pl-12px':!toggle}"
         (click)="clickShowSidebarCap1(item, data)">
           <i class="{{item.icon}} mo-lib-w-14px mo-lib-h-14px mo-lib-font-size-14px"
           [ngClass]="{ 'mo-lib-color-ffffff': item.show, 'mo-lib-color-929499': !item.show }">
@@ -45,12 +45,10 @@
         <div  class=" mo-lib-bg-151921" [ngStyle]="{'top':addStay === 0 ? '0' : addStay + 'px'}"
         *ngIf="item.show == true"
         [ngClass]="{'mo-lib-z-index-1000 mo-lib-overflow-hidden position-fixed mo-lib-w-238px  mo-lib-left-60px mo-lib-border-left-1px-666b79 mo-lib-border-radius-top-right-8px mo-lib-border-radius-bottom-right-8px':toggle}">
-          <div class="" *ngFor="let childrens1 of item.childrens"
-            [ngClass]="{ 'router-link-active':childrens1.hiden==true }">
-
-            <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data, $event)" (click) = "RouterShowSidebar(childrens1, item, data)"
-              class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
-              [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false}">
+          <div class="" *ngFor="let childrens1 of item.childrens">
+            <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data)" (click)="RouterShowSidebar(childrens1, item, data)"
+              class="mo-lib-hover-ffffff mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
+              [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false, 'router-link-active':childrens1.hiden}">
               {{ childrens1.name }}
                 <span *ngIf="childrens1.childrens2"
                   class="mo-lib-color-ffffff mo-lib-font-size-8px mo-lib-ml-auto"
@@ -61,7 +59,7 @@
 
             <div *ngIf="childrens1.show == true ">
               <div *ngFor="let childrens3 of childrens1.childrens2"
-              [ngClass]="{ 'router-link-active':childrens3.hiden==true }">
+              [ngClass]="{ 'router-link-active3':childrens3.hiden == true }">
                 <a
                 (click)="clicksidebarcap3(childrens3,childrens1.childrens2, item.childrens,data)" (click) = "RouterShowSidebarThree(childrens3)"
                 class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-color-929499 align-items-center d-flex mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-18px mo-lib-cursor-pointer mo-lib-font-head-3s"

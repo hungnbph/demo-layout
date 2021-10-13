@@ -628,4 +628,4 @@ export const data = [
     'show': false,
     'hiden': false,
   }
-]
+];

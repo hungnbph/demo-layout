@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'layout-sidebar-left',
   templateUrl: './sidebar-left.component.html',
   styleUrls: ['./sidebar-left.component.scss']
@@ -20,27 +21,28 @@ export class SidebarLeftComponent implements OnInit {
   data: Array<any> = [];
   parent2: any;
   routet: string;
-  constructor(location: Location, private elm: ElementRef, private route: Router,) {
+  constructor(location: Location, private elm: ElementRef, private route: Router) {
     this.data = data;
-    // route.events.subscribe((val) => {
-    //   if (location.path() !== '') {
-    //     this.routet = location.path();
-    //     console.log(this.routet);
-    //     var filterRoutes = this.data.filter(item => '/' + item.router === this.routet);
-    //     console.log(filterRoutes);
-
-    //   } i {
-    //     this.routet = 'home'
-    //   }
-    // });
 
     this.route.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        let filterrouter = this.data.filter(item => '/' + item.router === event.url);
-        filterrouter.forEach((event: any) => {
-          event.hiden = true;
-          console.log(event);
+        const filterrouter = this.data.filter((item: any) => {
+          if (`/${item.router}` === event.url) {
+            item.hiden = true;
+            return;
+          }
+          this.data.filter((childrens: any) => {
+            if (childrens.childrens) {
+              childrens.childrens.forEach((childrens1: any) => {
+                if (`/${childrens1.router}` === event.url) {
+                  childrens1.hiden = true;
+                  childrens.hiden = true;
+                }
+              });
+
+            }
+          })
         });
 
       });
@@ -56,6 +58,13 @@ export class SidebarLeftComponent implements OnInit {
         this.clickOutside.emit();
         this.data.forEach((envent: any) => {
           envent.show = false;
+          if (envent.childrens) {
+            envent.childrens.forEach((item: any) => {
+              if (item.hiden) {
+                envent.hiden = true;
+              }
+            });
+          }
         });
       }
     }
@@ -88,11 +97,12 @@ export class SidebarLeftComponent implements OnInit {
       parent.forEach((items: any) => {
         items.hiden = false;
         items.show = false;
-        if (item.childrens) {
-          item.childrens.forEach((childrens: any) => {
-            childrens.show = false;
-            if (childrens.childrens) {
-              childrens.childrens.forEach((childrens: any) => {
+        if (items.childrens) {
+          items.childrens.forEach((childrens1: any) => {
+            childrens1.show = false;
+            childrens1.hiden = false;
+            if (childrens1.childrens2) {
+              childrens1.childrens2.forEach((childrens: any) => {
                 childrens.hiden = false;
               });
             }
@@ -109,16 +119,6 @@ export class SidebarLeftComponent implements OnInit {
         if (event.hiden) {
           item.hiden = true;
         }
-        if (event.childrens2) {
-          event.childrens2.forEach((childrens2: any) => {
-            if (childrens2.show) {
-              if (childrens2.hiden) {
-                event.hiden = true;
-              }
-            }
-
-          });
-        }
       });
       return;
     }
@@ -128,6 +128,17 @@ export class SidebarLeftComponent implements OnInit {
         if (even.childrens) {
           even.childrens.forEach((childrens: any) => {
             childrens.show = false;
+            if (childrens.hiden) {
+              parent.forEach((items: any) => {
+                if (items.childrens) {
+                  items.childrens.forEach((childrens1: any) => {
+                    if (childrens1.hiden) {
+                      items.hiden = true;
+                    }
+                  });
+                }
+              });
+            }
           });
         }
       });
@@ -156,11 +167,28 @@ export class SidebarLeftComponent implements OnInit {
     }
     if (childrens1.show) {
       childrens1.show = false;
+      childrens1.childrens2.forEach((event: any) => {
+        event.show = false;
+        if (event.hiden) {
+          childrens1.hiden = true;
+        }
+      });
       return;
     }
     if (!childrens1.show) {
       parent.forEach((event: any) => {
         event.show = false;
+        if (event.childrens2) {
+          parent.forEach((childrens: any) => {
+            if (childrens.childrens2) {
+              childrens.childrens2.forEach((childrens2: any) => {
+                if (childrens2.hiden) {
+                  childrens.hiden = true;
+                }
+              });
+            }
+          });
+        }
       });
       childrens1.show = true;
     }
@@ -201,20 +229,17 @@ export class SidebarLeftComponent implements OnInit {
       childrens3.hiden = true;
       return;
     }
-
   }
 
-  clickAddStyle(event) {
+  paddingTopSidebar(event) {
     if (this.toggle === true) {
       let offsetTop = 0;
       let el = event.srcElement;
-
       while (el) {
         offsetTop += el.offsetTop;
         el = el.parentElement;
       }
       this.addStay = offsetTop - 56;
-      console.log(offsetTop)
       return { offsetTop: offsetTop };
     }
   }
