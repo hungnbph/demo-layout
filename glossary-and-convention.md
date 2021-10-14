@@ -175,7 +175,7 @@
 
 
 
-  13. Tên biến @Output bắt đầu bằng tiền tố  **mo**<br>, ngoài trừ việc viết custom towaway binding
+  13. Tên biến @Output **mbắt đầu bằng tiền tố  o**<br>, ngoài trừ việc viết custom towaway binding
     - Ví dụ:
       ```ts
           @Output() readonly moChange:EventEmitter<type> = new EventEmitter();
