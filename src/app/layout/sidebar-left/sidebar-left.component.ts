@@ -1,5 +1,5 @@
 import { routes } from './../layout.routing.module';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { data } from '../json/jsonMenu';
 import { Location } from '@angular/common';
@@ -28,21 +28,39 @@ export class SidebarLeftComponent implements OnInit {
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         const filterrouter = this.data.filter((item: any) => {
-          if (`/${item.router}` === event.url) {
+          if (`/${item.router}` === event.urlAfterRedirects) {
             item.hiden = true;
             return;
           }
           this.data.filter((childrens: any) => {
             if (childrens.childrens) {
               childrens.childrens.filter((childrens1: any) => {
-                if (`/${childrens1.router}` === event.url) {
+                if (`/${childrens1.router}` === event.urlAfterRedirects) {
                   childrens1.hiden = true;
                   childrens.hiden = true;
                   return;
                 }
-                console.log('cấp 3');
               });
             }
+          });
+
+          this.data.filter((childrens1: any) => {
+            if (childrens1.childrens) {
+              childrens1.childrens.filter((childrens2: any) => {
+
+                if (childrens2.childrens2) {
+                  childrens2.childrens2.filter((items: any) => {
+                    if (`/${items.router}` === event.urlAfterRedirects) {
+                      items.hiden = true;
+                      childrens2.hiden = true;
+                      childrens1.hiden = true;
+                      return;
+                    }
+                  });
+                }
+              });
+            }
+
           });
         });
       });
@@ -79,7 +97,7 @@ export class SidebarLeftComponent implements OnInit {
 
   RouterShowSidebar(childrens1: any, item: any) {
     if (!childrens1.childrens2) {
-      this.route.navigate([`${childrens1.router}`]);
+      this.route.navigate([`/${childrens1.router}`]);
     }
     return;
   }
@@ -87,7 +105,7 @@ export class SidebarLeftComponent implements OnInit {
 
   RouterShowSidebarThree(childrens3) {
     if (!childrens3.childrens2) {
-      this.route.navigate(['/', childrens3.router]);
+      this.route.navigate([`/${childrens3.router}`]);
       return;
     }
   }
@@ -116,9 +134,6 @@ export class SidebarLeftComponent implements OnInit {
       item.show = false;
       item.childrens.forEach((event: any) => {
         event.show = false;
-        if (event.hiden) {
-          item.hiden = true;
-        }
       });
       return;
     }
@@ -128,17 +143,6 @@ export class SidebarLeftComponent implements OnInit {
         if (even.childrens) {
           even.childrens.forEach((childrens: any) => {
             childrens.show = false;
-            if (childrens.hiden) {
-              parent.forEach((items: any) => {
-                if (items.childrens) {
-                  items.childrens.forEach((childrens1: any) => {
-                    if (childrens1.hiden) {
-                      items.hiden = true;
-                    }
-                  });
-                }
-              });
-            }
           });
         }
       });
@@ -169,26 +173,12 @@ export class SidebarLeftComponent implements OnInit {
       childrens1.show = false;
       childrens1.childrens2.forEach((event: any) => {
         event.show = false;
-        if (event.hiden) {
-          childrens1.hiden = true;
-        }
       });
       return;
     }
     if (!childrens1.show) {
       parent.forEach((event: any) => {
         event.show = false;
-        if (event.childrens2) {
-          parent.forEach((childrens: any) => {
-            if (childrens.childrens2) {
-              childrens.childrens2.forEach((childrens2: any) => {
-                if (childrens2.hiden) {
-                  childrens.hiden = true;
-                }
-              });
-            }
-          });
-        }
       });
       childrens1.show = true;
     }

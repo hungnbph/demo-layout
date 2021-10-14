@@ -24,7 +24,6 @@ export const data = [
         'router': 'cdp/profile',
         'show': false,
         'hiden': false,
-
       },
       {
         'key': '2',
@@ -72,30 +71,30 @@ export const data = [
     'id': 3,
     'name': 'Marketing',
     'icon': 'mo-icn-Marketing',
-    'router': 'detail',
+    'router': 'marketing',
     'show': false,
     'hiden': false,
     'childrens': [
       {
         'key': '4',
         'name': 'Marketing Automation',
-        'router': 'detail',
+        'router': '',
         'show': false,
         'hiden': false,
         'childrens2': [
           {
             'name': 'Chiến dịch Marketing',
-            'router': 'detail',
+            'router': 'marketing/campaign-marketing',
             'hiden': false
           },
           {
             'name': 'Master Campaign',
-            'router': 'detail',
+            'router': 'marketing/master-campaign',
             'hiden': false
           },
           {
             'name': 'Trường cá nhân Marketing',
-            'router': 'detail',
+            'router': 'marketing/individual-marketing',
             'hiden': false
           },
         ]
@@ -105,23 +104,23 @@ export const data = [
         'key': '5',
         'name': 'Journey Builder',
         'show': false,
-        'router': 'detail',
+        'router': 'jouney-builder',
         'hiden': false,
         'childrens2': [
           {
             'name': 'Journey Builder',
-            'router': 'detail',
+            'router': 'marketing/jouney-builder',
             'hiden': false
 
           },
           {
             'name': 'Master Campaign',
-            'router': 'detail',
+            'router': 'marketing/jouney-campaign-master',
             'hiden': false
           },
           {
             'name': 'Mẫu e-mail',
-            'router': 'detail',
+            'router': 'marketing/mau-email',
             'hiden': false
           },
         ]
@@ -129,33 +128,33 @@ export const data = [
       {
         'key': '6',
         'name': 'Ads Automation',
-        'router': 'detail',
+        'router': '',
         'show': false,
         'hiden': false,
         'childrens2': [
           {
             'name': 'Quy tắc tự động FB Ads',
-            'router': 'detail',
+            'router': 'fb-ads',
             'hiden': false
           },
           {
             'name': 'Quy tắc Kết quả tự động',
-            'router': 'detail',
+            'router': 'marketing/quytac-ads',
             'hiden': false
           },
           {
             'name': 'Đối tượng quảng cáo',
-            'router': 'detail',
+            'router': 'marketing/object-ads',
             'hiden': false
           },
           {
             'name': 'Chiến dịch quảng cáo FB',
-            'router': 'detail',
+            'router': 'marketing/chien-dich-fb-ads',
             'hiden': false
           },
           {
             'name': 'Kết nối tài khoản Ads',
-            'router': 'detail',
+            'router': 'marketing/connect-acount-ads',
             'hiden': false
           },
         ]
@@ -170,7 +169,7 @@ export const data = [
         'childrens2': [
           {
             'name': 'Template SMS',
-            'router': 'detail',
+            'router': 'marketing/tempalate-sms',
             'hiden': false
           },
         ]
@@ -184,12 +183,12 @@ export const data = [
         'childrens2': [
           {
             'name': 'Tạo URL Landing Page',
-            'router': 'detail',
+            'router': 'marketing/creact-landing-page',
             'hiden': false
           },
           {
             'name': 'Tích hợp với bên thứ ba',
-            'router': 'detail',
+            'router': 'marketing/tich-hop',
             'hiden': false
           }
         ]

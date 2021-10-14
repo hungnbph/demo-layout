@@ -21,7 +21,7 @@
   </div>
   <div class="sidebar mo-lib-overflow-y-auto mo-lib-calc-vh-56px">
       <div class="mo-lib-bg-hover-303642 " *ngFor="let item of data; let i = index"  [ngClass]="{ 'd-flex justify-content-center position-relative hoverSpan': toggle, 'router-link-active2':item.hiden}" >
-        <a (click) = "goPlace(item)" (click)="paddingTopSidebar($event)" #addStay
+        <a (click)="goPlace(item)" (click)="paddingTopSidebar($event)" #addStay
         class="d-flex align-items-center mo-lib-h-36px  mo-lib-cursor-pointer mo-lib-bg-hover-303642 hoverSpan"
         style="text-decoration: none;"
         [ngClass]="{'mo-lib-bg-303642':item.show, 'w-100 justify-content-center':toggle, 'mo-lib-pr-14px mo-lib-pl-12px':!toggle}"
@@ -48,7 +48,7 @@
           <div class="" *ngFor="let childrens1 of item.childrens">
             <a  (click)="clickShowSidebarCap2(childrens1, item.childrens, data)" (click)="RouterShowSidebar(childrens1, item, data)"
               class="mo-lib-hover-ffffff mo-lib-m-auto align-items-center mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-12px d-flex mo-lib-mr-10px mo-lib-cursor-pointer mo-lib-font-head-3s"
-              [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false, 'router-link-active':childrens1.hiden}">
+              [ngClass]="{'mo-lib-color-ffffff':childrens1.show,'mo-lib-color-929499 ': childrens1.show==false && !childrens1.hiden, 'router-link-active':!childrens1.childrens2 && childrens1.hiden, 'router-active':childrens1.childrens2 && childrens1.hiden}">
               {{ childrens1.name }}
                 <span *ngIf="childrens1.childrens2"
                   class="mo-lib-color-ffffff mo-lib-font-size-8px mo-lib-ml-auto"
@@ -61,7 +61,7 @@
               <div *ngFor="let childrens3 of childrens1.childrens2"
               [ngClass]="{ 'router-link-active3':childrens3.hiden == true }">
                 <a
-                (click)="clicksidebarcap3(childrens3,childrens1.childrens2, item.childrens,data)" (click) = "RouterShowSidebarThree(childrens3)"
+                (click)="clicksidebarcap3(childrens3,childrens1.childrens2, item.childrens,data)" (click)="RouterShowSidebarThree(childrens3)"
                 class="mo-lib-bg-hover-303642 mo-lib-hover-ffffff mo-lib-color-929499 align-items-center d-flex mo-lib-h-36px mo-lib-pr-14px mo-lib-pl-18px mo-lib-cursor-pointer mo-lib-font-head-3s"
                 >
                   {{ childrens3.name }}
