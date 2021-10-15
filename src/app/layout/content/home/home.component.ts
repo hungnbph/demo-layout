@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-home',
+  selector: 'mo-layout-content-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

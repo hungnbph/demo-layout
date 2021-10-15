@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-object-ads',
+  selector: 'mo-layout-content-marketing-ads_automation-object_ads',
   templateUrl: './object-ads.component.html',
   styleUrls: ['./object-ads.component.scss']
 })

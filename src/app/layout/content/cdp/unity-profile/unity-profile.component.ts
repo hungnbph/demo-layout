@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-unity-profile',
+  selector: 'mo-layout-content-cdp-unity_profile',
   templateUrl: './unity-profile.component.html',
   styleUrls: ['./unity-profile.component.scss']
 })

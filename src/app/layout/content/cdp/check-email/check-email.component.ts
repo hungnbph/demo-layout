@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-check-email',
+  selector: 'mo-layout-content-cdp-check_email',
   templateUrl: './check-email.component.html',
   styleUrls: ['./check-email.component.scss']
 })

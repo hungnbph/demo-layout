@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-profile-admin',
+  selector: 'mo-layout-content-cdp-profile_admin',
   templateUrl: './profile-admin.component.html',
   styleUrls: ['./profile-admin.component.scss']
 })

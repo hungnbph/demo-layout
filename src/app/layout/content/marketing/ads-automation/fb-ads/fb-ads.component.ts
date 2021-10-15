@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-fb-ads',
+  selector: 'mo-layout-content-marketing-ads_automation-fb_ads',
   templateUrl: './fb-ads.component.html',
   styleUrls: ['./fb-ads.component.scss']
 })

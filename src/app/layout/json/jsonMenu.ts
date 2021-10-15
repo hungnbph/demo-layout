@@ -8,8 +8,6 @@ export interface Idata {
   childrens?: Array<Idata>;
 }
 
-
-
 export const data: Array<Idata> = [
 
   {

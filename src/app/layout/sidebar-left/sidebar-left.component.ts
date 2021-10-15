@@ -1,31 +1,30 @@
+import { element } from 'protractor';
 
 import { routes } from './../layout.routing.module';
 import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { data } from '../json/jsonMenu';
 import { Idata } from '../json/jsonMenu';
-
 import { ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'layout-sidebar-left',
+  selector: 'mo-layout-sidebar_left',
   templateUrl: './sidebar-left.component.html',
   styleUrls: ['./sidebar-left.component.scss']
 })
 
 
 export class SidebarLeftComponent implements OnInit {
-  data: Idata[];
+  data: Array<Idata>;
   @Output() clickOutside = new EventEmitter<void>();
   @ViewChild('addStyle') addStyle: ElementRef;
-  @ViewChild('addStyleInElement') addStyleInElement: ElementRef;
-  toggle = false;
-  addStay = 0;
-  parent2;
+  toggle: boolean;
+  addStyleCss: number;
   routet: string;
-  name = 'angular';
-  constructor(private elm: ElementRef, private route: Router) {
+  constructor(private elementREf: ElementRef, private route: Router) {
     this.data = data;
+    this.toggle = false;
+    this.addStyleCss = 0;
 
     this.route.events
       .filter(event => event instanceof NavigationEnd)
@@ -50,7 +49,6 @@ export class SidebarLeftComponent implements OnInit {
           this.data.filter((childrens1) => {
             if (childrens1.childrens) {
               childrens1.childrens.filter((childrens2) => {
-
                 if (childrens2.childrens) {
                   childrens2.childrens.filter((items) => {
                     if (`/${items.router}` === event.urlAfterRedirects) {
@@ -73,40 +71,40 @@ export class SidebarLeftComponent implements OnInit {
 
   @HostListener('document:click', ['$event.target'])
   public onClick(target) {
-    const clickedInside = this.elm.nativeElement.contains(target);
+    const clickedInside = this.elementREf.nativeElement.contains(target);
     if (!clickedInside) {
       if (this.toggle === true) {
         this.clickOutside.emit();
-        this.data.forEach((envent) => {
-          envent.show = false;
+        this.data.forEach((event) => {
+          event.show = false;
         });
       }
     }
   }
 
-  goPlace(item) {
+  routerLinkUrlSidebarLv1(item) {
     if (!item.childrens) {
       this.route.navigate(['/', item.router]);
       return;
     }
   }
 
-  RouterShowSidebar(childrens1) {
-    if (!childrens1.childrens2) {
+  routerLinkUrlSidebarLv2(childrens1) {
+    if (!childrens1.childrens) {
       this.route.navigate([`/${childrens1.router}`]);
     }
     return;
   }
 
 
-  RouterShowSidebarThree(childrens3) {
-    if (!childrens3.childrens2) {
+  routerLinkUrlSidebarLv3(childrens3) {
+    if (!childrens3.childrens) {
       this.route.navigate([`/${childrens3.router}`]);
       return;
     }
   }
 
-  clickShowSidebarCap1(item, parent): void {
+  handlerClickShowSidebar1(item, parent): void {
     if (!item.childrens) {
       parent.forEach((items) => {
         items.hiden = false;
@@ -134,10 +132,10 @@ export class SidebarLeftComponent implements OnInit {
       return;
     }
     if (!item.show) {
-      parent.forEach((even) => {
-        even.show = false;
-        if (even.childrens) {
-          even.childrens.forEach((childrens) => {
+      parent.forEach((event) => {
+        event.show = false;
+        if (event.childrens) {
+          event.childrens.forEach((childrens) => {
             childrens.show = false;
           });
         }
@@ -146,7 +144,7 @@ export class SidebarLeftComponent implements OnInit {
     }
   }
 
-  clickShowSidebarCap2(childrens1, parent, parent2) {
+  handlerClickShowSidebar2(childrens1, parent, parent2) {
     if (!childrens1.childrens) {
       parent2.forEach((event) => {
         event.hiden = false;
@@ -181,7 +179,7 @@ export class SidebarLeftComponent implements OnInit {
   }
 
 
-  toggle1() {
+  handlerClickOpenSmallSidebar() {
     if (this.toggle === false) {
       this.data.forEach((event) => {
         event.show = false;
@@ -196,7 +194,7 @@ export class SidebarLeftComponent implements OnInit {
     }
   }
 
-  clicksidebarcap3(childrens3, parent3) {
+  handlerClicksidebar3(childrens3, parent3) {
     if (!childrens3.childrens) {
       parent3.forEach((event) => {
         event.hiden = false;
@@ -225,7 +223,7 @@ export class SidebarLeftComponent implements OnInit {
         offsetTop += el.offsetTop;
         el = el.parentElement;
       }
-      this.addStay = offsetTop - 56;
+      this.addStyleCss = offsetTop - 56;
       return { offsetTop: offsetTop };
     }
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-event-customization',
+  selector: 'mo-layout-content-cdp-event_customization',
   templateUrl: './event-customization.component.html',
   styleUrls: ['./event-customization.component.scss']
 })

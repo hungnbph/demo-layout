@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-quy-tac-ads',
+  selector: 'mo-layout-content-marketing-ads_automation-quy_tac_ads',
   templateUrl: './quy-tac-ads.component.html',
   styleUrls: ['./quy-tac-ads.component.scss']
 })

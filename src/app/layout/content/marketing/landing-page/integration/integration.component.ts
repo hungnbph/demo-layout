@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mo-layout-integration',
+  selector: 'mo-layout-content-marketing-landing_page-integration',
   templateUrl: './integration.component.html',
   styleUrls: ['./integration.component.scss']
 })
