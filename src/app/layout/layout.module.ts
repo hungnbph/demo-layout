@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { LayoutComponent } from './layout.component';
-import { SidebarLeftComponent } from './sidebar-left/sidebar-left.component';
-import { SidebarRightComponent } from './sidebar-right/sidebar-right.component';
+import { LayoutSidebarLeftComponent } from './sidebar-left/sidebar-left.component';
+import { LayoutSidebarRightComponent } from './sidebar-right/sidebar-right.component';
 import { ContentModule } from './content/content.module';
 import { LayoutroutingModule } from './layout.routing.module';
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    SidebarLeftComponent,
-    SidebarRightComponent,
+    LayoutSidebarLeftComponent,
+    LayoutSidebarRightComponent,
 
   ],
   imports: [

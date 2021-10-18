@@ -6,11 +6,14 @@ import { ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angu
   templateUrl: './sidebar-right.component.html',
   styleUrls: ['./sidebar-right.component.scss']
 })
-export class SidebarRightComponent implements OnInit {
-  @Output() clickOutside = new EventEmitter<void>();
-  hien = false;
-  hienNoitify = false;
+export class LayoutSidebarRightComponent implements OnInit {
+
+  hidden = false;
+  hiddenNoitify = false;
   api: Array<any> = [];
+
+
+  @Output() clickOutside = new EventEmitter<void>();
   constructor(private elm: ElementRef) {
     this.api = [
       {
@@ -34,34 +37,34 @@ export class SidebarRightComponent implements OnInit {
   public onClick(target) {
     const clickedInside = this.elm.nativeElement.contains(target);
     if (!clickedInside) {
-      if (this.hien === true || this.hienNoitify === true) {
+      if (this.hidden === true || this.hiddenNoitify === true) {
         this.clickOutside.emit();
-        this.hien = false;
-        this.hienNoitify = false;
+        this.hidden = false;
+        this.hiddenNoitify = false;
       }
     }
   }
 
-  logout() {
-    if (this.hien === false || this.hienNoitify === true) {
-      this.hien = true;
-      this.hienNoitify = false;
+  handlerClicklogout() {
+    if (this.hidden === false || this.hiddenNoitify === true) {
+      this.hidden = true;
+      this.hiddenNoitify = false;
     } else {
-      this.hien = false;
+      this.hidden = false;
     }
-    console.log(this.hien);
+    console.log(this.hidden);
   }
 
-  noitify() {
-    if (this.hien === true) {
-      this.hien = false;
-      this.hienNoitify = true;
+  handlerClicknoitify() {
+    if (this.hidden === true) {
+      this.hidden = false;
+      this.hiddenNoitify = true;
       return;
     }
-    if (this.hienNoitify === false) {
-      this.hienNoitify = true;
+    if (this.hiddenNoitify === false) {
+      this.hiddenNoitify = true;
     } else {
-      this.hienNoitify = false;
+      this.hiddenNoitify = false;
     }
   }
 

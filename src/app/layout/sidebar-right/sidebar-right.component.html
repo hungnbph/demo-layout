@@ -1,11 +1,11 @@
 <div class=" h-100 mo-lib-bg-ffffff mo-lib-w-28px position-fixed mo-lib-border-left-general mo-lib-right-0 mo-lib-top-0 mo-lib-bottom-0 ">
-  <div (click)="logout()"
+  <div (click)="handlerClicklogout()"
   class="mo-lib-h-44px d-flex align-items-center justify-content-center position-relative" >
     <a  class="mo-lib-cursor-pointer">
       <img  class="mo-lib-border-radius-10px mo-lib-w-20px mo-lib-h-20px mo-lib-border-general" src="https://tse3.mm.bing.net/th?id=OIP.Wm3vQxY8EBD81h_l79SDlAHaEd&pid=Api&P=0&w=274&h=166">
     </a>
     <div
-      *ngIf="hien==true"
+      *ngIf="hiddenNoitify"
     class=" position-absolute mo-lib-left--270px mo-lib-top-0">
       <div  class=" mo-lib-bg-ffffff mo-lib-border-radius-5px  mo-lib-w-260px">
         <div >
@@ -49,12 +49,12 @@
   </div>
 
   <div
-  (click)="noitify()"
+  (click)=" handlerClicknoitify()"
   class="mo-lib-border-top-general mo-lib-h-38px d-flex align-items-center justify-content-center position-relative" >
     <span  class="mo-icn-Home mo-lib-font-size-14px mo-lib-cursor-pointer">
     </span>
     <div
-    *ngIf="hienNoitify==true"
+    *ngIf="hiddenNoitify"
     class=" position-absolute  mo-lib-left--270px mo-lib-top-0" >
       <div  class=" mo-lib-bg-ffffff mo-lib-border-radius-5px  mo-lib-w-260px">
           <div  class="mo-lib-h-40px mo-lib-border-bottom-general d-flex mo-lib-px-12px align-items-center">
