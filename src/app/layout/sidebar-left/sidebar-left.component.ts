@@ -28,7 +28,7 @@ export class LayoutSidebarLeftComponent implements OnInit {
     this.addStyleCss = 0;
 
     this.route.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-      const filterrouter = this.data.filter((item) => {
+      this.data.filter((item) => {
         if (`/${item.router}` === event.urlAfterRedirects) {
           item.hiden = true;
           return;
@@ -103,9 +103,9 @@ export class LayoutSidebarLeftComponent implements OnInit {
     }
   }
 
-  handlerClickShowSidebar1(item: Idata, parent: any): void {
+  handlerClickShowSidebar1(item: Idata, parent: any[]): void {
     if (!item.childrens) {
-      parent.forEach((items: any) => {
+      parent.forEach((items: { hiden: boolean, show: boolean, childrens: any[] }) => {
         items.hiden = false;
         items.show = false;
         if (items.childrens) {
